@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +12,11 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed = 10f;
     public float acceleration = 2f;
     public float deceleration = 3f;
+    
+    public float jumpForce = 20f;
+    public float coyoteTime = 0.3f;
+    private bool isGrounded = false;
+    private float lastTimeGrounded;
 
     private Vector2 mouseInput;
     public float mouseSensitivity = 1f;
@@ -34,6 +40,7 @@ public class PlayerController : MonoBehaviour
         mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         OnMove();
         OnLook();
+        OnJump();
     }
 
     private void OnMove()
@@ -72,5 +79,36 @@ public class PlayerController : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, minCameraAngle, maxCameraAngle);
                                                                                                                             //Applies the vertical rotation to the camera object's local rotation.
         playerCamera.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
+    }
+
+    private void OnJump()
+    {
+                                                                                                                            //Checks if the "Jump" button is pressed and if the player is grounded or if the player was grounded less than the coyote time ago.
+        if (Input.GetButtonDown("Jump") && (isGrounded || Time.time - lastTimeGrounded <= coyoteTime))
+        {
+                                                                                                                            //Changes the velocity of the player object along the y-axis using the jump force and the velocity change force mode.
+                                                                                                                            //Force mode makes sure that the player jumps the same height regardless of the framerate or the player's current velocity.
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+                                                                                                                            //Checks if the player collides with an object with the "Ground" tag.
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+                                                                                                                            //Sets the isGrounded variable to true and sets the last time grounded to the current time.
+            isGrounded = true;
+            lastTimeGrounded = Time.time;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+                                                                                                                            //Update the grounded status when leaving the ground
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
     }
 }

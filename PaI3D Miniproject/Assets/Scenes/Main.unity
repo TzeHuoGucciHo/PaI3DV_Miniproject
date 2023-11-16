@@ -1664,16 +1664,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96224412b75c84429852dc86b6013bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
-  walkEaseIn: 2
-  walkEaseOut: 3
-  sprintSpeed: 15
-  sprintEaseIn: 2
-  sprintEaseOut: 3
+  movementSpeed: 10
+  acceleration: 2
+  deceleration: 3
+  jumpForce: 20
+  coyoteTime: 0.3
   mouseSensitivity: 1
   minCameraAngle: -90
   maxCameraAngle: 90
-  currentCameraAngle: 0
 --- !u!43 &1855907852
 Mesh:
   m_ObjectHideFlags: 0
