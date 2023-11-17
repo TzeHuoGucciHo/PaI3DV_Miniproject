@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        movementSpeed = 10.0f;
-        jumpForce = 10.0f;
+        movementSpeed = 10f;
+        jumpForce = 7f;
         coyoteTime = 0.1f;
 
         rb = GetComponent<Rigidbody>();
