@@ -9,6 +9,7 @@ TagManager:
   - Medium
   - Heavy
   - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX

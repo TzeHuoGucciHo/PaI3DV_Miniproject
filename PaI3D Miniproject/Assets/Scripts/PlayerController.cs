@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool hasIFrames = false;
     private float iFrameTimer = 0.0f;
     private float iFrameDuration = 1.0f;
+    public int totalScore;
 
     private void Start()
     {
