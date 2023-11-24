@@ -8,13 +8,13 @@ public class EnemyController : MonoBehaviour
     private Transform player;
     private NavMeshAgent agent;
     
-    void Start()
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    private void Update()
     {
         if (player != null && agent != null)
         {

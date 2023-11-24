@@ -89,20 +89,9 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
-        else
+        else if (collision.gameObject.CompareTag("Enemy"))
         {
-            switch (collision.collider.tag)
-            {
-                case "Light":
-                    TakeDamage(15);
-                    break;
-                case "Medium":
-                    TakeDamage(25);
-                    break;
-                case "Heavy":
-                    TakeDamage(50);
-                    break;
-            }
+            TakeDamage(25);
         }
     }
 
