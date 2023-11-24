@@ -15,6 +15,7 @@ public class BulletScript : MonoBehaviour
                 PlayerController playerController = playerObject.GetComponent<PlayerController>();
                 if (playerController != null)
                 {
+                    playerController.GainHealth(10);
                     playerController.totalScore++;
                 }
             }

@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     private bool hasIFrames = false;
-    private float iFrameTimer = 0.0f;
+    private float iFrameTimer;
     private float iFrameDuration = 1.0f;
     public int totalScore;
     
@@ -133,6 +133,12 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
+    public void GainHealth(int amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+    }
+
 
     private void Die()
     {

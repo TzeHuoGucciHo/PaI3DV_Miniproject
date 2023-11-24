@@ -5,12 +5,12 @@ public class ShooterScript : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform barrelTransform;
-    public float bulletSpeed = 50f;
+    public float bulletSpeed;
 
     public int maxAmmo = 6;
     private int currentAmmo;
     private bool isReloading;
-    public float reloadTime = 1.5f;
+    public float reloadTime;
 
     private Animator revolverAnimator;
     private static readonly int IsReloadingHash = Animator.StringToHash("Reloading");
@@ -19,6 +19,8 @@ public class ShooterScript : MonoBehaviour
 
     private void Start()
     {
+        bulletSpeed = 75f;
+        reloadTime = 1.25f;
         currentAmmo = maxAmmo;
         revolverAnimator = GetComponentInChildren<Animator>();
     }

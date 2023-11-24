@@ -5,13 +5,16 @@ using Random = UnityEngine.Random;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public float spawnRadius = 10f;
-    public float spawnCooldown = 3.0f;
-    public int maxEnemies = 10;
+    public float spawnRadius;
+    public float spawnCooldown;
+    public int maxEnemies;
 
     private void Start()
     {
         InvokeRepeating("SpawnEnemy", 0f, spawnCooldown);
+        spawnRadius = 10f;
+        spawnCooldown = 1.5f;
+        maxEnemies = 25;
     }
 
     private void SpawnEnemy()
