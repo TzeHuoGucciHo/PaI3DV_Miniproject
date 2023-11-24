@@ -8,67 +8,52 @@ public class ShooterScript : MonoBehaviour
 
     public int maxAmmo = 6;
     private int currentAmmo;
-    private bool isReloading = false;
-    public float reloadTime = 2f;
+    private bool isReloading;
+    public float reloadTime = 1.5f;
 
-    public GameObject revolverObject;
-    private Animator animator;
-
-    private static readonly int ReloadTriggerHash = Animator.StringToHash("ReloadTrigger");
+    private Animator revolverAnimator;
+    private static readonly int IsReloadingHash = Animator.StringToHash("Reloading");
 
     private void Start()
     {
         currentAmmo = maxAmmo;
-        animator = revolverObject.GetComponent<Animator>();
+        revolverAnimator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
-        if (isReloading) return;
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (currentAmmo > 0)
-            {
-                Shoot();
-            }
-            else
-            {
-                Reload();
-            }
-        }
+        if (isReloading || Input.GetMouseButtonDown(0) && (currentAmmo > 0 || Reload()))
+            Shoot();
     }
 
     private void Shoot()
     {
-        currentAmmo--;
-
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        if (--currentAmmo > 0)
         {
-            Vector3 shootDirection = hit.point - barrelTransform.position;
-            GameObject bullet = Instantiate(bulletPrefab, barrelTransform.position, Quaternion.LookRotation(shootDirection));
-            bullet.GetComponent<Rigidbody>().velocity = shootDirection.normalized * bulletSpeed;
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Vector3 shootDirection = hit.point - barrelTransform.position;
+                GameObject bullet = Instantiate(bulletPrefab, barrelTransform.position, Quaternion.LookRotation(shootDirection));
+                bullet.GetComponent<Rigidbody>().velocity = shootDirection.normalized * bulletSpeed;
+            }
         }
     }
 
-    private void Reload()
+    private bool Reload()
     {
         isReloading = true;
-
-        if (animator != null)
-        {
-            animator.SetTrigger(ReloadTriggerHash);
-        }
-
-        Invoke("ResetReload", reloadTime);
+        revolverAnimator.SetBool(IsReloadingHash, true);
+        Invoke("FinishReload", reloadTime);
+        return true;
     }
 
-    private void ResetReload()
+    private void FinishReload()
     {
         currentAmmo = maxAmmo;
         isReloading = false;
+        revolverAnimator.SetBool(IsReloadingHash, false);
     }
 }
