@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class ShooterScript : MonoBehaviour
@@ -13,6 +14,8 @@ public class ShooterScript : MonoBehaviour
 
     private Animator revolverAnimator;
     private static readonly int IsReloadingHash = Animator.StringToHash("Reloading");
+    
+    public TextMeshProUGUI ammoText;
 
     private void Start()
     {
@@ -24,11 +27,14 @@ public class ShooterScript : MonoBehaviour
     {
         if (isReloading || Input.GetMouseButtonDown(0) && (currentAmmo > 0 || Reload()))
             Shoot();
+        
+        ammoText.text = "Ammunition: " + currentAmmo.ToString();
+
     }
 
     private void Shoot()
     {
-        if (--currentAmmo > 0)
+        if (currentAmmo > 0)
         {
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             RaycastHit hit;
@@ -39,8 +45,11 @@ public class ShooterScript : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab, barrelTransform.position, Quaternion.LookRotation(shootDirection));
                 bullet.GetComponent<Rigidbody>().velocity = shootDirection.normalized * bulletSpeed;
             }
+
+            currentAmmo = Mathf.Max(0, currentAmmo - 1);
         }
     }
+
 
     private bool Reload()
     {

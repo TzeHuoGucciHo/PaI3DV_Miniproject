@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +18,14 @@ public class PlayerController : MonoBehaviour
     private float iFrameTimer = 0.0f;
     private float iFrameDuration = 1.0f;
     public int totalScore;
+    
+    public Canvas deathCanvas;
+    public TextMeshProUGUI deathMessageText;
+    public TextMeshProUGUI totalScoreText;
+
+    public Canvas UI;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI healthText;
 
     private void Start()
     {
@@ -24,6 +34,7 @@ public class PlayerController : MonoBehaviour
         movementSpeed = 10f;
         jumpForce = 7f;
         currentHealth = maxHealth;
+        deathCanvas.enabled = false;
     }
 
     private void Update()
@@ -43,6 +54,10 @@ public class PlayerController : MonoBehaviour
                 iFrameTimer = 0.0f;
             }
         }
+        
+        scoreText.text = "Score: " + totalScore.ToString();
+        healthText.text = "Health: " + currentHealth.ToString();
+        
     }
     
     private void OnMove()
@@ -121,6 +136,17 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("You have died!");
+        UI.enabled = false;
+        deathCanvas.enabled = true;
+        deathMessageText.text = "You have DIED!";
+        totalScoreText.text = "Your total score was: " + totalScore.ToString();
+        Time.timeScale = 0f;
     }
+    
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
 }
