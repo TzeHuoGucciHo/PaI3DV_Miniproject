@@ -42,7 +42,7 @@ The goal of this project was to develop a high-octane first-person shooter, Ultr
 
 ### Scenes
 
-- Single-screen game.
+- Only one scene is in the game.
 
 ### Testing
 
