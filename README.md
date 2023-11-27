@@ -52,26 +52,28 @@ The goal of this project was to develop a high-octane first-person shooter, Ultr
 
 # Time spent in hours:
 
-| Task                                  | Time (hours) |
-| ------------------------------------- | ------------ |
-| Setting up Unity, GitHub project      | 0.5          |
-| Research and conceptualization       | 1            |
-| Setting up Unity Input System         | 1            |
-| Implementing basic movement           | 3            |
-| Testing different movement methods   | 2.5          |
-| Implementing first-person camera      | 1.5          |
-| Testing jumping mechanics             | 3            |
-| Implementing health system            | 6.5          |
-| Revolver modeling                     | 0.5          |
-| EnemySpawner implementation          | 0.5          |
-| EnemyController implementation        | 0.5          |
-| ShooterScript implementation          | 1.5          |
-| BulletScript implementation           | 0.5          |
-| Reload animation implementation       | 2            |
-| UI including Death screen             | 0.5          |
-| Final adjustments                     | 1            |
-| Code commenting                       | 1.5          |
-| Writing report                        | 1.5          |
-| Writing README.txt                     | 0.5          |
-| Creating presentation                  | 0.5          |
-| **Total**                             | **32**       |
+| Task                                      | Time (hours) |
+| ----------------------------------------- | ------------ |
+| Setting up Unity, making a GitHub project | 0.5          |
+| Research and conceptualization of game idea| 1            |
+| Setting up Unity Input System             | 1            |
+| Implementing basic movement               | 3            |
+| Testing different methods for movement    | 2.5          |
+| Implementing and testing first-person camera| 1.5        |
+| Testing different methods for jumping     | 3            |
+| Implementing and testing jumping mechanics | 1.5          |
+| Implementing health system and damage taken functionality | 6.5 |
+| Revolver modeling                        | 0.5          |
+| EnemySpawner implementation              | 0.5          |
+| EnemyController implementation            | 0.5          |
+| ShooterScript implementation              | 1.5          |
+| BulletScript implementation               | 0.5          |
+| Reload animation implementation           | 2            |
+| UI including Death screen                 | 0.5          |
+| Final adjustments                         | 1            |
+| Code commenting                           | 1.5          |
+| Writing report                            | 1.5          |
+| Writing README.txt                         | 0.5          |
+| Creating presentation                      | 0.5          |
+| **Total**                                 | **32**       |
+
