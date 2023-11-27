@@ -14,7 +14,6 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
-
     private void Update()
     {
 //Set the destination of the NavMeshAgent to the player position.
