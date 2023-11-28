@@ -2,7 +2,7 @@
 
 ## Overview
 
-The goal of this project was to develop a high-octane first-person shooter, Ultrakill, "but worse". The player uses the WASD keyboard keys for movement, the mouse to look around, and the left mouse button to shoot enemies. The player's object is to survive and accumulate. 
+The goal of this project was to develop a high-octane first-person shooter, Ultrakill, "but worse". The player uses the WASD keyboard keys for movement, the mouse to look around, and the left mouse button to shoot enemies. The player's object is to accumulate points and survive . 
 
 ## Core Parts
 
@@ -26,7 +26,7 @@ The goal of this project was to develop a high-octane first-person shooter, Ultr
 
 - **BulletScript:** Handles bullet interactions with "Ground" and "Enemy" tags. Interacts with PlayerController's GainHealth() function.
 - **EnemyController:** Manages enemies' player tracking using NavMesh and UnityEngine.AI.
-- **EnemySpawner:** Handles enemy spawning and instantiation, uses raycasting to ensure enemies are only spawns on "Ground" tagged game objects.
+- **EnemySpawner:** Handles enemy spawning and instantiation, uses raycasting to ensure enemies only spawns on "Ground" tagged game objects.
 - **PlayerController:** Controls player movement, camera orientation, collisions, UI, and scene management.
 - **ShooterScript:** Manages shooting and bullet instantiation, including raycasting and revolver reload animation.
 
